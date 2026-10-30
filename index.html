@@ -24,7 +24,6 @@
     .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
     
     .brand-logo { display: flex; align-items: center; text-decoration: none; }
-    /* Logo Maior */
     .brand-logo img { height: 80px; width: auto; max-width: 280px; object-fit: contain; transition: transform 0.2s; }
     .brand-logo:hover img { transform: scale(1.02); }
 
@@ -47,14 +46,21 @@
     .product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; position: relative; }
     .product-card:hover { transform: translateY(-3px); border-color: var(--primary); }
     
-    .product-img-wrapper { position: relative; width: 100%; height: 190px; background: #000; border-bottom: 1px solid var(--border); }
-    .product-img { width: 100%; height: 100%; object-fit: cover; }
-    .product-badge-cat { position: absolute; top: 10px; left: 10px; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); color: var(--primary); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+    .product-img-wrapper { position: relative; width: 100%; height: 190px; background: #000; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .product-img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.2s; }
+    .product-img-wrapper:hover .product-img { opacity: 0.85; }
+    .product-badge-cat { position: absolute; top: 10px; left: 10px; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); color: var(--primary); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; pointer-events: none; }
 
     .product-info { padding: 16px; display: flex; flex-direction: column; flex: 1; }
     .product-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; font-family: 'Rajdhani', sans-serif; }
     .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.3; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
     
+    /* Overlay para Expansão da Imagem (Modal) */
+    #image-modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); z-index: 1000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(8px); }
+    #image-modal img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 0 30px rgba(0, 0, 0, 0.8); }
+    #image-modal-close { position: absolute; top: 20px; right: 25px; color: #FFF; font-size: 2.5rem; font-weight: bold; cursor: pointer; user-select: none; transition: color 0.2s; }
+    #image-modal-close:hover { color: var(--primary); }
+
     footer { text-align: center; padding: 25px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
   </style>
 </head>
@@ -64,7 +70,7 @@
       <a href="index.html" class="brand-logo">
         <img src="logo.png" alt="Motta Shopp" onerror="this.src='https://via.placeholder.com/200x80?text=Motta+Shopp'">
       </a>
-      <a href="admin.html" class="btn" style="width: auto; padding: 6px 12px; font-size: 0.8rem;">Admin ⚙️</a>
+      <a href="admin.html" target="_blank" class="btn" style="width: auto; padding: 6px 12px; font-size: 0.8rem;">Admin ⚙️</a>
     </div>
   </header>
 
@@ -80,6 +86,12 @@
   <main class="main-container">
     <div class="products-grid" id="products-grid"></div>
   </main>
+
+  <!-- Modal para Zoom na Foto -->
+  <div id="image-modal">
+    <span id="image-modal-close">&times;</span>
+    <img id="modal-img-src" src="" alt="Imagem Ampliada">
+  </div>
 
   <footer>&copy; 2026 MOTTA SHOPP — Todos os direitos reservados.</footer>
 
@@ -106,6 +118,25 @@
 
     const grid = document.getElementById('products-grid');
     const categoriesBar = document.getElementById('categories-bar');
+    const imageModal = document.getElementById('image-modal');
+    const modalImgSrc = document.getElementById('modal-img-src');
+    const imageModalClose = document.getElementById('image-modal-close');
+
+    // Funções para abrir e fechar a foto
+    window.openImageModal = (src) => {
+      modalImgSrc.src = src;
+      imageModal.style.display = 'flex';
+    };
+
+    imageModalClose.addEventListener('click', () => {
+      imageModal.style.display = 'none';
+    });
+
+    imageModal.addEventListener('click', (e) => {
+      if (e.target === imageModal) {
+        imageModal.style.display = 'none';
+      }
+    });
 
     onSnapshot(prodsCol, (snapshot) => {
       products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -143,7 +174,7 @@
       filtered.forEach(p => {
         grid.innerHTML += `
           <div class="product-card">
-            <div class="product-img-wrapper">
+            <div class="product-img-wrapper" onclick="window.openImageModal('${p.img}')" title="Clique para ampliar a foto">
               <span class="product-badge-cat">${p.category || 'Geral'}</span>
               <img src="${p.img}" class="product-img" alt="${p.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Sem+Imagem'">
             </div>
