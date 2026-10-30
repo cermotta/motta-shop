@@ -146,20 +146,14 @@
     const db = getFirestore(app);
     const prodsCol = collection(db, "produtos");
 
-    async function hashPassword(str) {
-      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    const PASS_HASH = "f048bb4ee43950e3256eb28eaac35e19277d337f7c6cd8be8fb5d1a5fbca4a59";
+    const ADMIN_PASS = "390675@Sii";
 
     const loginOverlay = document.getElementById('login-overlay');
     const adminPassInput = document.getElementById('admin-pass');
     const btnLogin = document.getElementById('btn-login');
 
-    async function checkLogin() {
-      const inputHash = await hashPassword(adminPassInput.value);
-      if (inputHash === PASS_HASH) {
+    function checkLogin() {
+      if (adminPassInput.value === ADMIN_PASS) {
         loginOverlay.style.display = 'none';
       } else {
         alert('Palavra-passe incorreta!');
@@ -210,7 +204,7 @@
           title: document.getElementById('p-title').value,
           category: document.getElementById('p-category').value.trim() || 'Geral',
           img: document.getElementById('p-img').value,
-          mp: document.getElementById('p-mp5']?.value || document.getElementById('p-mp').value,
+          mp: document.getElementById('p-mp').value,
           desc: document.getElementById('p-desc').value,
           createdAt: Date.now()
         });
