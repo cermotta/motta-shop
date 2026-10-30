@@ -24,8 +24,8 @@
     .nav-container { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; }
     
     .brand-logo { display: flex; align-items: center; text-decoration: none; }
-    .brand-logo svg { height: 60px; width: auto; transition: transform 0.2s; }
-    .brand-logo:hover svg { transform: scale(1.02); }
+    .brand-logo img { height: 50px; width: auto; border-radius: 6px; object-fit: contain; transition: transform 0.2s; }
+    .brand-logo:hover img { transform: scale(1.02); }
 
     .btn { background: var(--accent-gray); color: var(--text-main); border: 1px solid var(--border); padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; }
     .btn:hover { border-color: var(--primary); color: var(--primary); }
@@ -61,24 +61,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
-        <!-- Logotipo Vectorizado Exato Baseado no Pedido -->
-        <svg viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Ícone (Carrinho + Seta Circular) -->
-          <g transform="translate(10, 2) scale(0.65)">
-            <!-- Seta Circular / Recarga -->
-            <path d="M 65 50 C 40 50 25 35 25 20 C 25 10 33 2 45 2" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
-            <path d="M 40 12 L 50 2 L 40 -8" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M 85 2 C 95 10 98 25 90 38" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
-            <!-- Carrinho de Compras -->
-            <path d="M 38 35 L 48 35 L 62 60 L 88 60" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <circle cx="58" cy="72" r="7" stroke="#FFFFFF" stroke-width="5" fill="none"/>
-            <circle cx="82" cy="72" r="7" stroke="#FFFFFF" stroke-width="5" fill="none"/>
-          </g>
-          <!-- Texto MOTTA SHOPP -->
-          <text x="75" y="48" font-family="'Orbitron', sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" letter-spacing="2">MOTTA SHOPP</text>
-          <!-- Linha Inferior do Logótipo -->
-          <line x1="120" y1="62" x2="195" y2="62" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-        </svg>
+        <img src="logo.png" alt="Motta Shopp" onerror="this.src='https://via.placeholder.com/150x50?text=Motta+Shopp'">
       </a>
       <a href="admin.html" class="btn" style="width: auto; padding: 6px 12px; font-size: 0.8rem;">Admin ⚙️</a>
     </div>

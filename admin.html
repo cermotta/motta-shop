@@ -28,7 +28,7 @@
     
     header { background: rgba(13, 13, 13, 0.95); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
     .nav-container { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .brand-logo svg { height: 60px; width: auto; }
+    .brand-logo img { height: 50px; width: auto; border-radius: 6px; object-fit: contain; }
     
     .main-container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; flex: 1; width: 100%; display: grid; grid-template-columns: 400px 1fr; gap: 40px; }
     @media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } }
@@ -74,18 +74,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
-        <svg viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(10, 2) scale(0.65)">
-            <path d="M 65 50 C 40 50 25 35 25 20 C 25 10 33 2 45 2" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
-            <path d="M 40 12 L 50 2 L 40 -8" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M 85 2 C 95 10 98 25 90 38" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
-            <path d="M 38 35 L 48 35 L 62 60 L 88 60" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <circle cx="58" cy="72" r="7" stroke="#FFFFFF" stroke-width="5" fill="none"/>
-            <circle cx="82" cy="72" r="7" stroke="#FFFFFF" stroke-width="5" fill="none"/>
-          </g>
-          <text x="75" y="48" font-family="'Orbitron', sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" letter-spacing="2">MOTTA SHOPP</text>
-          <line x1="120" y1="62" x2="195" y2="62" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-        </svg>
+        <img src="logo.png" alt="Motta Shopp" onerror="this.src='https://via.placeholder.com/150x50?text=Motta+Shopp'">
       </a>
       <a href="index.html" class="btn" style="width: auto;">Ver Vitrine ↗</a>
     </div>
@@ -157,13 +146,11 @@
     const db = getFirestore(app);
     const prodsCol = collection(db, "produtos");
 
-    // Função de Criptografia SHA-256 nativa do navegador
     async function hashPassword(str) {
       const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // Hash SHA-256 da sua senha "390675@Sii"
     const PASS_HASH = "f048bb4ee43950e3256eb28eaac35e19277d337f7c6cd8be8fb5d1a5fbca4a59";
 
     const loginOverlay = document.getElementById('login-overlay');
@@ -223,7 +210,7 @@
           title: document.getElementById('p-title').value,
           category: document.getElementById('p-category').value.trim() || 'Geral',
           img: document.getElementById('p-img').value,
-          mp: document.getElementById('p-mp').value,
+          mp: document.getElementById('p-mp5']?.value || document.getElementById('p-mp').value,
           desc: document.getElementById('p-desc').value,
           createdAt: Date.now()
         });
