@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOTTA SHOP | Loja Oficial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0D0D0D;
+      --card-bg: #161618;
+      --primary: #FF5500;
+      --primary-hover: #E04B00;
+      --text-main: #FFFFFF;
+      --text-muted: #A0A0AA;
+      --border: #2A2A30;
+      --accent-gray: #222226;
+      --mp-blue: #009EE3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+    header { background: rgba(13, 13, 13, 0.95); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .brand-logo svg { height: 48px; width: auto; }
+    .nav-actions { display: flex; gap: 12px; align-items: center; }
+    .btn { background: var(--accent-gray); color: var(--text-main); border: 1px solid var(--border); padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; }
+    .btn:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-primary { background: var(--primary); color: #FFF; border: none; }
+    .btn-primary:hover { background: var(--primary-hover); color: #FFF; }
+    .btn-mp { background: var(--mp-blue); color: #FFF; border: none; font-weight: 700; }
+    .btn-mp:hover { background: #0089C7; }
+    .hero { text-align: center; padding: 60px 20px 40px; background: radial-gradient(circle at center, rgba(255,85,0,0.12) 0%, rgba(13,13,13,0) 70%); }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+    .hero p { color: var(--text-muted); margin-top: 10px; font-size: 1.1rem; }
+    .main-container { max-width: 1200px; margin: 0 auto; padding: 20px 24px 60px; flex: 1; width: 100%; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+    .product-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+    .product-img { width: 100%; height: 220px; object-fit: cover; background: #000; border-bottom: 1px solid var(--border); }
+    .product-info { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+    .product-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; font-family: 'Rajdhani', sans-serif; }
+    .product-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; flex: 1; margin-bottom: 16px; }
+    .product-price { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 16px; font-family: 'Orbitron', sans-serif; }
+    .cart-drawer { position: fixed; top: 0; right: -400px; width: 100%; max-width: 380px; height: 100vh; background: #1A1A1E; border-left: 1px solid var(--border); z-index: 200; transition: right 0.3s ease; padding: 24px; display: flex; flex-direction: column; }
+    .cart-drawer.open { right: 0; }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .cart-items { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+    .cart-item { display: flex; gap: 12px; background: var(--card-bg); padding: 10px; border-radius: 8px; border: 1px solid var(--border); }
+    .cart-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
+    .cart-footer { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 20px; }
+    footer { text-align: center; padding: 30px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <svg viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 120 40 L 220 130 L 220 185 L 170 185 L 120 140 L 70 185 L 20 185 L 20 40 L 70 40 L 70 110 L 120 65 L 170 110 L 170 40 Z" fill="#FFFFFF"/>
+          <path d="M 190 40 L 240 40 L 240 100 L 190 140 Z" fill="#FF5500"/>
+          <text x="250" y="145" font-family="'Orbitron', sans-serif" font-weight="900" font-size="62" fill="#FFFFFF" letter-spacing="4">MOTTA</text>
+          <line x1="20" y1="205" x2="150" y2="205" stroke="#FF5500" stroke-width="4"/>
+          <text x="175" y="214" font-family="'Orbitron', sans-serif" font-weight="800" font-size="26" fill="#FF5500" letter-spacing="12">SHOP</text>
+          <line x1="330" y1="205" x2="480" y2="205" stroke="#FF5500" stroke-width="4"/>
+        </svg>
+      </a>
+      <div class="nav-actions">
+        <button class="btn btn-primary" id="btn-cart">Carrinho (<span id="cart-count">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Produtos Selecionados</h1>
+    <p>Encontre as melhores ofertas com pagamento rápido via Mercado Pago</p>
+  </section>
+
+  <main class="main-container">
+    <div class="products-grid" id="products-grid"></div>
+  </main>
+
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Seu Carrinho</h3>
+      <button class="btn" id="btn-cart-close" style="padding:4px 8px;">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer">
+      <div style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:16px;">
+        <span>Total:</span>
+        <span id="cart-total" style="color:var(--primary);">R$ 0,00</span>
+      </div>
+      <button class="btn btn-mp" style="width:100%; justify-content:center;" id="btn-checkout">Finalizar Compra</button>
+    </div>
+  </div>
+
+  <footer>&copy; 2026 MOTTA SHOP — Todos os direitos reservados.</footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCgkU2EiRzjjAUUNxacblcOHOs3R2x1QdY",
+      authDomain: "motta-shop.firebaseapp.com",
+      projectId: "motta-shop",
+      storageBucket: "motta-shop.firebasestorage.app",
+      messagingSenderId: "1089173662496",
+      appId: "1:1089173662496:web:4590dd2dad9799699ec545",
+      measurementId: "G-7RC3JTFF77"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const prodsCol = collection(db, "produtos");
+
+    let products = [];
+    let cart = [];
+
+    const grid = document.getElementById('products-grid');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartItems = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+
+    onSnapshot(prodsCol, (snapshot) => {
+      products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      renderProducts();
+    });
+
+    function renderProducts() {
+      grid.innerHTML = products.length === 0 ? '<p style="color:var(--text-muted); grid-column:1/-1; text-align:center;">Nenhum produto cadastrado no momento.</p>' : '';
+      products.forEach(p => {
+        grid.innerHTML += `
+          <div class="product-card">
+            <img src="${p.img}" class="product-img" alt="${p.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Sem+Imagem'">
+            <div class="product-info">
+              <div class="product-title">${p.title}</div>
+              <div class="product-desc">${p.desc || ''}</div>
+              <div class="product-price">R$ ${parseFloat(p.price).toFixed(2).replace('.', ',')}</div>
+              <div style="display:flex; gap:8px;">
+                <a href="${p.mp}" target="_blank" class="btn btn-mp" style="flex:1; justify-content:center;">Comprar com Mercado Pago</a>
+                <button class="btn" onclick="addToCart('${p.id}')">🛒</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    window.addToCart = (id) => {
+      const prod = products.find(p => p.id === id);
+      if (prod) {
+        cart.push(prod);
+        updateCart();
+        cartDrawer.classList.add('open');
+      }
+    };
+
+    function updateCart() {
+      cartCount.innerText = cart.length;
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, idx) => {
+        total += item.price;
+        cartItems.innerHTML += `
+          <div class="cart-item">
+            <img src="${item.img}">
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.9rem;">${item.title}</div>
+              <div style="color:var(--primary); font-weight:700;">R$ ${item.price.toFixed(2)}</div>
+            </div>
+            <button class="btn" style="padding:2px 6px;" onclick="removeFromCart(${idx})">✕</button>
+          </div>
+        `;
+      });
+      cartTotal.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    window.removeFromCart = (idx) => {
+      cart.splice(idx, 1);
+      updateCart();
+    };
+
+    document.getElementById('btn-cart').addEventListener('click', () => cartDrawer.classList.add('open'));
+    document.getElementById('btn-cart-close').addEventListener('click', () => cartDrawer.classList.remove('open'));
+    document.getElementById('btn-checkout').addEventListener('click', () => {
+      if (cart.length === 0) return alert('O carrinho está vazio!');
+      window.open(cart[0].mp, '_blank');
+    });
+  </script>
+</body>
+</html>

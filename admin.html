@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOTTA SHOP | Painel Administrativo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0D0D0D;
+      --panel-bg: #1A1A1E;
+      --primary: #FF5500;
+      --primary-hover: #E04B00;
+      --text-main: #FFFFFF;
+      --text-muted: #A0A0AA;
+      --border: #2A2A30;
+      --accent-gray: #222226;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; padding: 20px; }
+    .container { max-width: 800px; margin: 0 auto; }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+    .brand-logo svg { height: 36px; width: auto; }
+    .btn { background: var(--accent-gray); color: var(--text-main); border: 1px solid var(--border); padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+    .btn:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-primary { background: var(--primary); color: #FFF; border: none; }
+    .btn-primary:hover { background: var(--primary-hover); color: #FFF; }
+    .admin-panel { background: var(--panel-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .admin-title { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; margin-bottom: 20px; color: var(--primary); }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+    .form-group input, .form-group textarea { background: var(--bg-color); border: 1px solid var(--border); color: var(--text-main); padding: 12px; border-radius: 6px; outline: none; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
+    .admin-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+    .admin-table th, .admin-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .admin-table th { color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <a href="index.html" class="brand-logo">
+        <svg viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 120 40 L 220 130 L 220 185 L 170 185 L 120 140 L 70 185 L 20 185 L 20 40 L 70 40 L 70 110 L 120 65 L 170 110 L 170 40 Z" fill="#FFFFFF"/>
+          <path d="M 190 40 L 240 40 L 240 100 L 190 140 Z" fill="#FF5500"/>
+          <text x="250" y="145" font-family="'Orbitron', sans-serif" font-weight="900" font-size="62" fill="#FFFFFF" letter-spacing="4">MOTTA</text>
+          <line x1="20" y1="205" x2="150" y2="205" stroke="#FF5500" stroke-width="4"/>
+          <text x="175" y="214" font-family="'Orbitron', sans-serif" font-weight="800" font-size="26" fill="#FF5500" letter-spacing="12">SHOP</text>
+          <line x1="330" y1="205" x2="480" y2="205" stroke="#FF5500" stroke-width="4"/>
+        </svg>
+      </a>
+      <a href="index.html" class="btn">Ver Loja ↗</a>
+    </header>
+
+    <div class="admin-panel">
+      <div class="admin-title">Painel de Gestão de Produtos</div>
+      <form id="product-form">
+        <input type="hidden" id="prod-id">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nome do Produto</label>
+            <input type="text" id="prod-title" required placeholder="Ex: Pendrive MediaNav 2026">
+          </div>
+          <div class="form-group">
+            <label>Preço (R$)</label>
+            <input type="number" step="0.01" id="prod-price" required placeholder="99.90">
+          </div>
+          <div class="form-group">
+            <label>Link do Mercado Pago</label>
+            <input type="url" id="prod-mp" required placeholder="https://mpago.la/...">
+          </div>
+          <div class="form-group">
+            <label>URL da Imagem</label>
+            <input type="url" id="prod-img" required placeholder="https://link-da-imagem.jpg">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label>Descrição</label>
+          <textarea id="prod-desc" rows="3" placeholder="Detalhes do produto..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+      </form>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="admin-list"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, onSnapshot, addDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCgkU2EiRzjjAUUNxacblcOHOs3R2x1QdY",
+      authDomain: "motta-shop.firebaseapp.com",
+      projectId: "motta-shop",
+      storageBucket: "motta-shop.firebasestorage.app",
+      messagingSenderId: "1089173662496",
+      appId: "1:1089173662496:web:4590dd2dad9799699ec545",
+      measurementId: "G-7RC3JTFF77"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const prodsCol = collection(db, "produtos");
+
+    let products = [];
+    const adminList = document.getElementById('admin-list');
+
+    // Senha simples de proteção ao abrir a página de admin
+    window.addEventListener('DOMContentLoaded', () => {
+      const pass = prompt('Digite a senha de administrador:');
+      if (pass !== 'admin') {
+        alert('Senha incorreta!');
+        window.location.href = 'index.html';
+      }
+    });
+
+    onSnapshot(prodsCol, (snapshot) => {
+      products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      renderAdminList();
+    });
+
+    function renderAdminList() {
+      adminList.innerHTML = products.length === 0 ? '<tr><td colspan="3" style="text-align:center; color:var(--text-muted);">Nenhum produto cadastrado.</td></tr>' : '';
+      products.forEach(p => {
+        adminList.innerHTML += `
+          <tr>
+            <td><b>${p.title}</b></td>
+            <td>R$ ${parseFloat(p.price).toFixed(2)}</td>
+            <td>
+              <button class="btn" style="padding:4px 8px; color:#ff4444;" onclick="deleteProduct('${p.id}')">Excluir</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    document.getElementById('product-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        title: document.getElementById('prod-title').value,
+        price: parseFloat(document.getElementById('prod-price').value),
+        mp: document.getElementById('prod-mp').value,
+        img: document.getElementById('prod-img').value,
+        desc: document.getElementById('prod-desc').value
+      };
+
+      await addDoc(prodsCol, data);
+      e.target.reset();
+      alert('Produto cadastrado com sucesso!');
+    });
+
+    window.deleteProduct = async (id) => {
+      if (confirm('Deseja mesmo remover este produto?')) {
+        await deleteDoc(doc(db, "produtos", id));
+      }
+    };
+  </script>
+</body>
+</html>
