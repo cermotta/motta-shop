@@ -28,9 +28,10 @@
     
     header { background: rgba(13, 13, 13, 0.95); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
     .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
-    /* Logo Maior */
     .brand-logo img { height: 80px; width: auto; max-width: 280px; object-fit: contain; }
     
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+
     .main-container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; flex: 1; width: 100%; display: grid; grid-template-columns: 400px 1fr; gap: 40px; }
     @media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } }
 
@@ -77,7 +78,10 @@
       <a href="index.html" class="brand-logo">
         <img src="logo.png" alt="Motta Shopp" onerror="this.src='https://via.placeholder.com/200x80?text=Motta+Shopp'">
       </a>
-      <a href="index.html" class="btn" style="width: auto;">Ver Vitrine ↗</a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn" style="width: auto;">Ver Vitrine ↗</a>
+        <button class="btn btn-danger" id="btn-logout" style="width: auto;">Sair 🚪</button>
+      </div>
     </div>
   </header>
 
@@ -152,10 +156,12 @@
     const loginOverlay = document.getElementById('login-overlay');
     const adminPassInput = document.getElementById('admin-pass');
     const btnLogin = document.getElementById('btn-login');
+    const btnLogout = document.getElementById('btn-logout');
 
     function checkLogin() {
       if (adminPassInput.value === ADMIN_PASS) {
         loginOverlay.style.display = 'none';
+        adminPassInput.value = ''; // Limpa o campo por segurança
       } else {
         alert('Palavra-passe incorreta!');
       }
@@ -164,6 +170,13 @@
     btnLogin.addEventListener('click', checkLogin);
     adminPassInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') checkLogin();
+    });
+
+    // Ação do Botão Sair
+    btnLogout.addEventListener('click', () => {
+      loginOverlay.style.display = 'flex';
+      adminPassInput.value = '';
+      adminPassInput.focus();
     });
 
     const btnAiSummarize = document.getElementById('btn-ai-summarize');
