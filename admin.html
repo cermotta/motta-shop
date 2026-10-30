@@ -157,20 +157,31 @@
     const db = getFirestore(app);
     const prodsCol = collection(db, "produtos");
 
+    // Função de Criptografia SHA-256 nativa do navegador
+    async function hashPassword(str) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Hash SHA-256 da sua senha "390675@Sii"
+    const PASS_HASH = "f048bb4ee43950e3256eb28eaac35e19277d337f7c6cd8be8fb5d1a5fbca4a59";
+
     const loginOverlay = document.getElementById('login-overlay');
     const adminPassInput = document.getElementById('admin-pass');
     const btnLogin = document.getElementById('btn-login');
 
-    btnLogin.addEventListener('click', () => {
-      if (adminPassInput.value === 'admin') {
+    async function checkLogin() {
+      const inputHash = await hashPassword(adminPassInput.value);
+      if (inputHash === PASS_HASH) {
         loginOverlay.style.display = 'none';
       } else {
         alert('Palavra-passe incorreta!');
       }
-    });
+    }
 
+    btnLogin.addEventListener('click', checkLogin);
     adminPassInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') btnLogin.click();
+      if (e.key === 'Enter') checkLogin();
     });
 
     const btnAiSummarize = document.getElementById('btn-ai-summarize');
