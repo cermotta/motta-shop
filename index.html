@@ -22,24 +22,24 @@
     body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
     header { background: rgba(13, 13, 13, 0.95); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
     .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .brand-logo svg { height: 48px; width: auto; }
+    .brand-logo svg { height: 42px; width: auto; }
     .nav-actions { display: flex; gap: 12px; align-items: center; }
     .btn { background: var(--accent-gray); color: var(--text-main); border: 1px solid var(--border); padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; }
     .btn:hover { border-color: var(--primary); color: var(--primary); }
     .btn-primary { background: var(--primary); color: #FFF; border: none; }
     .btn-primary:hover { background: var(--primary-hover); color: #FFF; }
-    .hero { text-align: center; padding: 60px 20px 40px; background: radial-gradient(circle at center, rgba(255,85,0,0.12) 0%, rgba(13,13,13,0) 70%); }
-    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
-    .hero p { color: var(--text-muted); margin-top: 10px; font-size: 1.1rem; }
+    .hero { text-align: center; padding: 50px 20px 30px; background: radial-gradient(circle at center, rgba(255,85,0,0.12) 0%, rgba(13,13,13,0) 70%); }
+    .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
+    .hero p { color: var(--text-muted); margin-top: 8px; font-size: 1rem; }
     .main-container { max-width: 1200px; margin: 0 auto; padding: 20px 24px 60px; flex: 1; width: 100%; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-    .product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
-    .product-card:hover { transform: translateY(-4px); border-color: var(--primary); }
-    .product-img { width: 100%; height: 220px; object-fit: cover; background: #000; border-bottom: 1px solid var(--border); }
-    .product-info { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-    .product-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; font-family: 'Rajdhani', sans-serif; }
-    .product-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; flex: 1; margin-bottom: 16px; }
-    .product-price { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 16px; font-family: 'Orbitron', sans-serif; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+    .product-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+    .product-img { width: 100%; height: 190px; object-fit: cover; background: #000; border-bottom: 1px solid var(--border); }
+    .product-info { padding: 16px; display: flex; flex-direction: column; flex: 1; }
+    .product-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; font-family: 'Rajdhani', sans-serif; }
+    .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.3; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .product-price { font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-bottom: 14px; font-family: 'Orbitron', sans-serif; }
     .cart-drawer { position: fixed; top: 0; right: -400px; width: 100%; max-width: 380px; height: 100vh; background: #1A1A1E; border-left: 1px solid var(--border); z-index: 200; transition: right 0.3s ease; padding: 24px; display: flex; flex-direction: column; }
     .cart-drawer.open { right: 0; }
     .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -47,16 +47,17 @@
     .cart-item { display: flex; gap: 12px; background: var(--card-bg); padding: 10px; border-radius: 8px; border: 1px solid var(--border); }
     .cart-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
     .cart-footer { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 20px; }
-    footer { text-align: center; padding: 30px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
+    footer { text-align: center; padding: 25px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
   </style>
 </head>
 <body>
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
+        <!-- Logotipo Corrigido (M Perfeito) -->
         <svg viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 20 40 L 70 40 L 70 110 L 120 65 L 170 110 L 170 40 L 220 40 L 220 185 L 170 185 L 120 140 L 70 185 L 20 185 Z" fill="#FFFFFF"/>
-          <path d="M 190 40 L 240 40 L 240 140 L 190 100 Z" fill="#FF5500"/>
+          <path d="M 20 185 L 70 185 L 70 115 L 120 160 L 170 115 L 170 185 L 220 185 L 220 40 L 170 40 L 120 85 L 70 40 L 20 40 Z" fill="#FFFFFF"/>
+          <path d="M 190 185 L 240 185 L 240 85 L 190 125 Z" fill="#FF5500"/>
           <text x="250" y="145" font-family="'Orbitron', sans-serif" font-weight="900" font-size="62" fill="#FFFFFF" letter-spacing="4">MOTTA</text>
           <line x1="20" y1="205" x2="150" y2="205" stroke="#FF5500" stroke-width="4"/>
           <text x="175" y="214" font-family="'Orbitron', sans-serif" font-weight="800" font-size="26" fill="#FF5500" letter-spacing="12">SHOP</text>
@@ -64,14 +65,14 @@
         </svg>
       </a>
       <div class="nav-actions">
-        <button class="btn btn-primary" id="btn-cart">Favoritos / Lista (<span id="cart-count">0</span>)</button>
+        <button class="btn btn-primary" id="btn-cart">Favoritos (<span id="cart-count">0</span>)</button>
       </div>
     </div>
   </header>
 
   <section class="hero">
-    <h1>Produtos Selecionados</h1>
-    <p>As melhores recomendações e ofertas para você</p>
+    <h1>Vitrine de Ofertas</h1>
+    <p>Os melhores produtos selecionados para você</p>
   </section>
 
   <main class="main-container">
@@ -135,7 +136,7 @@
             <img src="${p.img}" class="product-img" alt="${p.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Sem+Imagem'">
             <div class="product-info">
               <div class="product-title">${p.title}</div>
-              <div class="product-desc">${p.desc || ''}</div>
+              <div class="product-desc" title="${p.desc || ''}">${p.desc || ''}</div>
               <div class="product-price">R$ ${parseFloat(p.price).toFixed(2).replace('.', ',')}</div>
               <div style="display:flex; gap:8px;">
                 <a href="${p.mp}" target="_blank" class="btn btn-primary" style="flex:1; justify-content:center;">Ver Oferta</a>
