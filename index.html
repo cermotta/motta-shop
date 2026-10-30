@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MOTTA SHOP | As Melhores Ofertas da Web</title>
+  <title>MOTTA SHOPP | As Melhores Ofertas da Web</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -21,10 +21,10 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
     body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
     header { background: rgba(13, 13, 13, 0.95); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-    .nav-container { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; }
     
     .brand-logo { display: flex; align-items: center; text-decoration: none; }
-    .brand-logo svg { height: 68px; width: auto; filter: drop-shadow(0px 0px 10px rgba(255, 85, 0, 0.25)); transition: transform 0.2s; }
+    .brand-logo svg { height: 60px; width: auto; transition: transform 0.2s; }
     .brand-logo:hover svg { transform: scale(1.02); }
 
     .btn { background: var(--accent-gray); color: var(--text-main); border: 1px solid var(--border); padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; }
@@ -61,26 +61,23 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
-        <svg viewBox="0 0 620 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7700"/><stop offset="100%" stop-color="#FF3300"/></linearGradient>
-            <linearGradient id="cyberWhite" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#D0D0D5"/></linearGradient>
-          </defs>
-          <g transform="translate(10, 10)">
-            <path d="M 15 155 L 55 155 L 55 85 L 105 130 L 125 130 L 75 70 L 75 15 L 15 15 Z" fill="url(#cyberWhite)"/>
-            <path d="M 165 155 L 125 155 L 125 85 L 75 130 L 55 130 L 105 70 L 105 15 L 165 15 Z" fill="url(#cyberWhite)"/>
-            <path d="M 140 155 L 175 155 L 175 60 L 140 95 Z" fill="url(#neonOrange)"/>
-            <circle cx="157" cy="40" r="8" fill="#FF5500"/>
-            <line x1="157" y1="48" x2="157" y2="60" stroke="#FF5500" stroke-width="3"/>
+        <!-- Logotipo Vectorizado Exato Baseado no Pedido -->
+        <svg viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ícone (Carrinho + Seta Circular) -->
+          <g transform="translate(10, 2) scale(0.65)">
+            <!-- Seta Circular / Recarga -->
+            <path d="M 65 50 C 40 50 25 35 25 20 C 25 10 33 2 45 2" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <path d="M 40 12 L 50 2 L 40 -8" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 85 2 C 95 10 98 25 90 38" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <!-- Carrinho de Compras -->
+            <path d="M 38 35 L 48 35 L 62 60 L 88 60" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="58" cy="72" r="7" stroke="#FFFFFF" stroke-width="5" fill="none"/>
+            <circle cx="82" cy="72" r="7" stroke="#FFFFFF" stroke-width="5" fill="none"/>
           </g>
-          <path d="M 195 25 L 205 15 L 600 15 L 600 35" stroke="#33333C" stroke-width="2" fill="none"/>
-          <path d="M 195 145 L 205 155 L 600 155 L 600 135" stroke="#33333C" stroke-width="2" fill="none"/>
-          <text x="200" y="105" font-family="'Orbitron', sans-serif" font-weight="900" font-size="78" fill="url(#cyberWhite)" letter-spacing="6">MOTTA</text>
-          <rect x="500" y="45" width="105" height="42" rx="4" fill="#FF5500"/>
-          <text x="512" y="75" font-family="'Orbitron', sans-serif" font-weight="900" font-size="24" fill="#0D0D0D" letter-spacing="3">SHOP</text>
-          <text x="202" y="140" font-family="'Rajdhani', sans-serif" font-weight="700" font-size="20" fill="#FF5500" letter-spacing="8">O SEU CONECTIVO DIGITAL</text>
-          <line x1="200" y1="155" x2="520" y2="155" stroke="#FF5500" stroke-width="3"/>
-          <circle cx="525" cy="155" r="3" fill="#FF5500"/>
+          <!-- Texto MOTTA SHOPP -->
+          <text x="75" y="48" font-family="'Orbitron', sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" letter-spacing="2">MOTTA SHOPP</text>
+          <!-- Linha Inferior do Logótipo -->
+          <line x1="120" y1="62" x2="195" y2="62" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
         </svg>
       </a>
       <a href="admin.html" class="btn" style="width: auto; padding: 6px 12px; font-size: 0.8rem;">Admin ⚙️</a>
@@ -88,7 +85,7 @@
   </header>
 
   <section class="hero">
-    <h1>Motta Shop</h1>
+    <h1>Motta Shopp</h1>
     <p>As melhores ofertas da web</p>
   </section>
 
@@ -100,7 +97,7 @@
     <div class="products-grid" id="products-grid"></div>
   </main>
 
-  <footer>&copy; 2026 MOTTA SHOP — Todos os direitos reservados.</footer>
+  <footer>&copy; 2026 MOTTA SHOPP — Todos os direitos reservados.</footer>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
