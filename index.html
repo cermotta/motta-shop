@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MOTTA SHOP | O Seu Conectivo Digital</title>
+  <title>MOTTA SHOP | As Melhores Ofertas da Web</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -23,7 +23,6 @@
     header { background: rgba(13, 13, 13, 0.95); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
     .nav-container { max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
     
-    /* Logo Maior e Destaque */
     .brand-logo { display: flex; align-items: center; text-decoration: none; }
     .brand-logo svg { height: 68px; width: auto; filter: drop-shadow(0px 0px 10px rgba(255, 85, 0, 0.25)); transition: transform 0.2s; }
     .brand-logo:hover svg { transform: scale(1.02); }
@@ -32,18 +31,29 @@
     .btn:hover { border-color: var(--primary); color: var(--primary); }
     .btn-primary { background: var(--primary); color: #FFF; border: none; }
     .btn-primary:hover { background: var(--primary-hover); color: #FFF; }
+    
     .hero { text-align: center; padding: 50px 20px 30px; background: radial-gradient(circle at center, rgba(255,85,0,0.12) 0%, rgba(13,13,13,0) 70%); }
     .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
-    .hero p { color: var(--text-muted); margin-top: 8px; font-size: 1rem; }
-    .main-container { max-width: 1200px; margin: 0 auto; padding: 20px 24px 60px; flex: 1; width: 100%; }
+    .hero p { color: var(--text-muted); margin-top: 8px; font-size: 1.1rem; }
+
+    .categories-bar { max-width: 1200px; margin: 0 auto 30px; padding: 0 24px; display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+    .cat-pill { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-muted); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+    .cat-pill:hover, .cat-pill.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+    .main-container { max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; flex: 1; width: 100%; }
     .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-    .product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+    
+    .product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; position: relative; }
     .product-card:hover { transform: translateY(-3px); border-color: var(--primary); }
-    .product-img { width: 100%; height: 190px; object-fit: cover; background: #000; border-bottom: 1px solid var(--border); }
+    
+    .product-img-wrapper { position: relative; width: 100%; height: 190px; background: #000; border-bottom: 1px solid var(--border); }
+    .product-img { width: 100%; height: 100%; object-fit: cover; }
+    .product-badge-cat { position: absolute; top: 10px; left: 10px; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); color: var(--primary); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+
     .product-info { padding: 16px; display: flex; flex-direction: column; flex: 1; }
     .product-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; font-family: 'Rajdhani', sans-serif; }
-    .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.3; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .product-price { font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-bottom: 14px; font-family: 'Orbitron', sans-serif; }
+    .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.3; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+    
     footer { text-align: center; padding: 25px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
   </style>
 </head>
@@ -51,58 +61,40 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
-        <!-- Logo Tecnológica Cyberpunk com M Maior e Slogan -->
         <svg viewBox="0 0 620 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Brilhos e Gradientes do M -->
           <defs>
-            <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#FF7700"/>
-              <stop offset="100%" stop-color="#FF3300"/>
-            </linearGradient>
-            <linearGradient id="cyberWhite" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#FFFFFF"/>
-              <stop offset="100%" stop-color="#D0D0D5"/>
-            </linearGradient>
+            <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF7700"/><stop offset="100%" stop-color="#FF3300"/></linearGradient>
+            <linearGradient id="cyberWhite" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#D0D0D5"/></linearGradient>
           </defs>
-
-          <!-- Ícone M Estilizado Tech -->
           <g transform="translate(10, 10)">
-            <!-- Haste Esquerda M -->
             <path d="M 15 155 L 55 155 L 55 85 L 105 130 L 125 130 L 75 70 L 75 15 L 15 15 Z" fill="url(#cyberWhite)"/>
-            <!-- Haste Direita M -->
             <path d="M 165 155 L 125 155 L 125 85 L 75 130 L 55 130 L 105 70 L 105 15 L 165 15 Z" fill="url(#cyberWhite)"/>
-            <!-- Detalhe Neon Laranja / Nó de Circuito -->
             <path d="M 140 155 L 175 155 L 175 60 L 140 95 Z" fill="url(#neonOrange)"/>
             <circle cx="157" cy="40" r="8" fill="#FF5500"/>
             <line x1="157" y1="48" x2="157" y2="60" stroke="#FF5500" stroke-width="3"/>
           </g>
-
-          <!-- Moldura Cyber / HUD Tech -->
           <path d="M 195 25 L 205 15 L 600 15 L 600 35" stroke="#33333C" stroke-width="2" fill="none"/>
           <path d="M 195 145 L 205 155 L 600 155 L 600 135" stroke="#33333C" stroke-width="2" fill="none"/>
-
-          <!-- Texto MOTTA principal -->
           <text x="200" y="105" font-family="'Orbitron', sans-serif" font-weight="900" font-size="78" fill="url(#cyberWhite)" letter-spacing="6">MOTTA</text>
-
-          <!-- Badge SHOP Neon -->
           <rect x="500" y="45" width="105" height="42" rx="4" fill="#FF5500"/>
           <text x="512" y="75" font-family="'Orbitron', sans-serif" font-weight="900" font-size="24" fill="#0D0D0D" letter-spacing="3">SHOP</text>
-
-          <!-- Slogan Tecnológico -->
           <text x="202" y="140" font-family="'Rajdhani', sans-serif" font-weight="700" font-size="20" fill="#FF5500" letter-spacing="8">O SEU CONECTIVO DIGITAL</text>
-
-          <!-- Ponto / Traço de Circuito no Canto -->
           <line x1="200" y1="155" x2="520" y2="155" stroke="#FF5500" stroke-width="3"/>
           <circle cx="525" cy="155" r="3" fill="#FF5500"/>
         </svg>
       </a>
+      <a href="admin.html" class="btn" style="width: auto; padding: 6px 12px; font-size: 0.8rem;">Admin ⚙️</a>
     </div>
   </header>
 
   <section class="hero">
-    <h1>Vitrine de Ofertas</h1>
-    <p>Os melhores produtos selecionados para você</p>
+    <h1>Motta Shop</h1>
+    <p>As melhores ofertas da web</p>
   </section>
+
+  <div class="categories-bar" id="categories-bar">
+    <button class="cat-pill active" data-cat="all">Todas as Ofertas</button>
+  </div>
 
   <main class="main-container">
     <div class="products-grid" id="products-grid"></div>
@@ -129,23 +121,54 @@
     const prodsCol = collection(db, "produtos");
 
     let products = [];
+    let currentCategory = 'all';
+
     const grid = document.getElementById('products-grid');
+    const categoriesBar = document.getElementById('categories-bar');
 
     onSnapshot(prodsCol, (snapshot) => {
       products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      renderCategories();
       renderProducts();
     });
 
+    function renderCategories() {
+      const cats = ['all', ...new Set(products.map(p => p.category || 'Geral'))];
+      categoriesBar.innerHTML = '';
+      
+      cats.forEach(cat => {
+        const label = cat === 'all' ? 'Todas as Ofertas' : cat;
+        const isActive = currentCategory === cat ? 'active' : '';
+        categoriesBar.innerHTML += `<button class="cat-pill ${isActive}" data-cat="${cat}">${label}</button>`;
+      });
+
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          currentCategory = e.target.getAttribute('data-cat');
+          renderProducts();
+        });
+      });
+    }
+
     function renderProducts() {
-      grid.innerHTML = products.length === 0 ? '<p style="color:var(--text-muted); grid-column:1/-1; text-align:center;">Nenhum produto cadastrado no momento.</p>' : '';
-      products.forEach(p => {
+      const filtered = currentCategory === 'all' 
+        ? products 
+        : products.filter(p => (p.category || 'Geral') === currentCategory);
+
+      grid.innerHTML = filtered.length === 0 ? '<p style="color:var(--text-muted); grid-column:1/-1; text-align:center;">Nenhum produto encontrado nesta categoria.</p>' : '';
+      
+      filtered.forEach(p => {
         grid.innerHTML += `
           <div class="product-card">
-            <img src="${p.img}" class="product-img" alt="${p.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Sem+Imagem'">
+            <div class="product-img-wrapper">
+              <span class="product-badge-cat">${p.category || 'Geral'}</span>
+              <img src="${p.img}" class="product-img" alt="${p.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Sem+Imagem'">
+            </div>
             <div class="product-info">
               <div class="product-title">${p.title}</div>
               <div class="product-desc" title="${p.desc || ''}">${p.desc || ''}</div>
-              <div class="product-price">R$ ${parseFloat(p.price).toFixed(2).replace('.', ',')}</div>
               <a href="${p.mp}" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Ver Oferta</a>
             </div>
           </div>
