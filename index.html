@@ -21,10 +21,11 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
     body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
     header { background: rgba(13, 13, 13, 0.95); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-    .nav-container { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
     
     .brand-logo { display: flex; align-items: center; text-decoration: none; }
-    .brand-logo img { height: 50px; width: auto; border-radius: 6px; object-fit: contain; transition: transform 0.2s; }
+    /* Logo Maior */
+    .brand-logo img { height: 80px; width: auto; max-width: 280px; object-fit: contain; transition: transform 0.2s; }
     .brand-logo:hover img { transform: scale(1.02); }
 
     .btn { background: var(--accent-gray); color: var(--text-main); border: 1px solid var(--border); padding: 10px 18px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.9rem; }
@@ -61,7 +62,7 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
-        <img src="logo.png" alt="Motta Shopp" onerror="this.src='https://via.placeholder.com/150x50?text=Motta+Shopp'">
+        <img src="logo.png" alt="Motta Shopp" onerror="this.src='https://via.placeholder.com/200x80?text=Motta+Shopp'">
       </a>
       <a href="admin.html" class="btn" style="width: auto; padding: 6px 12px; font-size: 0.8rem;">Admin ⚙️</a>
     </div>
