@@ -17,7 +17,6 @@
       --text-muted: #A0A0AA;
       --border: #2A2A30;
       --accent-gray: #222226;
-      --mp-blue: #009EE3;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
     body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
@@ -29,8 +28,6 @@
     .btn:hover { border-color: var(--primary); color: var(--primary); }
     .btn-primary { background: var(--primary); color: #FFF; border: none; }
     .btn-primary:hover { background: var(--primary-hover); color: #FFF; }
-    .btn-mp { background: var(--mp-blue); color: #FFF; border: none; font-weight: 700; }
-    .btn-mp:hover { background: #0089C7; }
     .hero { text-align: center; padding: 60px 20px 40px; background: radial-gradient(circle at center, rgba(255,85,0,0.12) 0%, rgba(13,13,13,0) 70%); }
     .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
     .hero p { color: var(--text-muted); margin-top: 10px; font-size: 1.1rem; }
@@ -58,8 +55,8 @@
     <div class="nav-container">
       <a href="index.html" class="brand-logo">
         <svg viewBox="0 0 500 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 120 40 L 220 130 L 220 185 L 170 185 L 120 140 L 70 185 L 20 185 L 20 40 L 70 40 L 70 110 L 120 65 L 170 110 L 170 40 Z" fill="#FFFFFF"/>
-          <path d="M 190 40 L 240 40 L 240 100 L 190 140 Z" fill="#FF5500"/>
+          <path d="M 20 40 L 70 40 L 70 110 L 120 65 L 170 110 L 170 40 L 220 40 L 220 185 L 170 185 L 120 140 L 70 185 L 20 185 Z" fill="#FFFFFF"/>
+          <path d="M 190 40 L 240 40 L 240 140 L 190 100 Z" fill="#FF5500"/>
           <text x="250" y="145" font-family="'Orbitron', sans-serif" font-weight="900" font-size="62" fill="#FFFFFF" letter-spacing="4">MOTTA</text>
           <line x1="20" y1="205" x2="150" y2="205" stroke="#FF5500" stroke-width="4"/>
           <text x="175" y="214" font-family="'Orbitron', sans-serif" font-weight="800" font-size="26" fill="#FF5500" letter-spacing="12">SHOP</text>
@@ -67,14 +64,14 @@
         </svg>
       </a>
       <div class="nav-actions">
-        <button class="btn btn-primary" id="btn-cart">Carrinho (<span id="cart-count">0</span>)</button>
+        <button class="btn btn-primary" id="btn-cart">Favoritos / Lista (<span id="cart-count">0</span>)</button>
       </div>
     </div>
   </header>
 
   <section class="hero">
     <h1>Produtos Selecionados</h1>
-    <p>Encontre as melhores ofertas com pagamento rápido via Mercado Pago</p>
+    <p>As melhores recomendações e ofertas para você</p>
   </section>
 
   <main class="main-container">
@@ -83,16 +80,16 @@
 
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-header">
-      <h3>Seu Carrinho</h3>
+      <h3>Sua Seleção</h3>
       <button class="btn" id="btn-cart-close" style="padding:4px 8px;">✕</button>
     </div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-footer">
       <div style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:16px;">
-        <span>Total:</span>
+        <span>Total Estimado:</span>
         <span id="cart-total" style="color:var(--primary);">R$ 0,00</span>
       </div>
-      <button class="btn btn-mp" style="width:100%; justify-content:center;" id="btn-checkout">Finalizar Compra</button>
+      <button class="btn btn-primary" style="width:100%; justify-content:center;" id="btn-checkout">Aceder ao Primeiro Item</button>
     </div>
   </div>
 
@@ -141,8 +138,8 @@
               <div class="product-desc">${p.desc || ''}</div>
               <div class="product-price">R$ ${parseFloat(p.price).toFixed(2).replace('.', ',')}</div>
               <div style="display:flex; gap:8px;">
-                <a href="${p.mp}" target="_blank" class="btn btn-mp" style="flex:1; justify-content:center;">Comprar com Mercado Pago</a>
-                <button class="btn" onclick="addToCart('${p.id}')">🛒</button>
+                <a href="${p.mp}" target="_blank" class="btn btn-primary" style="flex:1; justify-content:center;">Ver Oferta</a>
+                <button class="btn" onclick="addToCart('${p.id}')" title="Adicionar à lista">⭐</button>
               </div>
             </div>
           </div>
@@ -187,7 +184,7 @@
     document.getElementById('btn-cart').addEventListener('click', () => cartDrawer.classList.add('open'));
     document.getElementById('btn-cart-close').addEventListener('click', () => cartDrawer.classList.remove('open'));
     document.getElementById('btn-checkout').addEventListener('click', () => {
-      if (cart.length === 0) return alert('O carrinho está vazio!');
+      if (cart.length === 0) return alert('A lista está vazia!');
       window.open(cart[0].mp, '_blank');
     });
   </script>
